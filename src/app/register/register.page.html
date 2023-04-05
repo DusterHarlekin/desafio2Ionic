@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>Crear cuenta</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/home"><ion-icon name="home-sharp"></ion-icon></ion-button>
+      <ion-button routerLink="/linterna"><ion-icon name="flashlight-sharp"></ion-icon></ion-button>
+      <ion-button routerLink="/login"><ion-icon name="person-sharp"></ion-icon></ion-button>
+      <ion-button routerLink="/register"><ion-icon name="person-add-sharp"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="form-container">
+    <form #form="ngForm" (ngSubmit)="register(form)">
+      
+      <div>
+        <h3>Crea una cuenta</h3>
+      </div>
+      <div class="photo-container">
+        <div>
+          <img [src]="imagen" alt="">
+        </div>
+        <ion-button size="large" (click)="takePhoto()"><ion-icon name="camera"></ion-icon></ion-button>
+      </div>
+
+      <div>
+        <ion-item>
+          <ion-input
+            name="name"
+            type="text"
+            placeholder="Nombre de usuario"
+            ngModel
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            name="email"
+            type="email"
+            placeholder="Correo electrónico"
+            ngModel
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            name="password"
+            type="password"
+            placeholder="Contraseña"
+            ngModel
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <h5>Ubicación de residencia</h5>
+        </ion-item>
+        <ion-item>
+          <ion-label>Longitud:</ion-label>
+          <ion-input
+            name="long"
+            type="text"
+            placeholder="Longitud"
+            [(ngModel)]="long"
+            readonly
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Latitud:</ion-label>
+          <ion-input
+            name="lat"
+            type="text"
+            placeholder="Latitud"
+            [(ngModel)]="lat"
+            readonly
+            required
+          ></ion-input>
+        </ion-item>
+
+        <div class="gl-btn">
+          <ion-button (click)="getGeolocation()" color="success" size="large"><ion-icon name="earth-sharp"></ion-icon><ion-icon name="location-sharp"></ion-icon></ion-button>
+        </div>
+      </div>
+
+      <ion-button
+        size="large"
+        type="submit"
+        [disabled]="form.invalid"
+        expand="block"
+        >Registrar</ion-button
+      >
+    </form>
+  </div>
+

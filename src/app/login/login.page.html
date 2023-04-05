@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>Iniciar sesion</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/home"><ion-icon name="home-sharp"></ion-icon></ion-button>
+      <ion-button routerLink="/linterna"><ion-icon name="flashlight-sharp"></ion-icon></ion-button>
+      <ion-button routerLink="/login"><ion-icon name="person-sharp"></ion-icon></ion-button>
+      <ion-button routerLink="/register"><ion-icon name="person-add-sharp"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="form-container">
+    <form #form="ngForm" (ngSubmit)="login(form)">
+      <div>
+        <h3>Iniciar sesion</h3>
+      </div>
+      <div>
+        <ion-item>
+          <ion-input
+            name="name"
+            type="text"
+            placeholder="Nombre de usuario"
+            ngModel
+            required
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input
+            name="password"
+            type="password"
+            placeholder="Contraseña"
+            ngModel
+            required
+          ></ion-input>
+        </ion-item>
+      </div>
+
+      <ion-button
+        size="large"
+        type="submit"
+        [disabled]="form.invalid"
+        expand="block"
+        >Iniciar sesion</ion-button
+      >
+    </form>
+  </div>
+</ion-content>

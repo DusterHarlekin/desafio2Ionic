@@ -1,0 +1,67 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="tertiary">
+    <ion-title>
+      Inicio
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/home"><ion-icon name="home-sharp"></ion-icon></ion-button>
+      <ion-button routerLink="/linterna"><ion-icon name="flashlight-sharp"></ion-icon></ion-button>
+      <ion-button routerLink="/login"><ion-icon name="person-sharp"></ion-icon></ion-button>
+      <ion-button routerLink="/register"><ion-icon name="person-add-sharp"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Inicio</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <h1>Top 10 trending</h1>
+
+  <div class="container" *ngIf="!games; else showGames">
+    <ion-card class="loaderCard">
+      <div>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </div>
+      <ion-card-header>
+        <ion-card-subtitle><ion-skeleton-text animated style="width: 80%"></ion-skeleton-text></ion-card-subtitle>
+        <ion-card-title><ion-skeleton-text animated style="width: 80%;"></ion-skeleton-text></ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="loaderCard">
+      <div>
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </div>
+      <ion-card-header>
+        <ion-card-subtitle><ion-skeleton-text animated style="width: 80%"></ion-skeleton-text></ion-card-subtitle>
+        <ion-card-title><ion-skeleton-text animated style="width: 80%;"></ion-skeleton-text></ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ng-template #showGames>
+    <div class="container">
+      <ion-card *ngFor="let game of games">
+        <img src="{{game.thumbnail}}" />
+        <ion-card-header>
+          <ion-card-subtitle>{{game.genre}}</ion-card-subtitle>
+          <ion-card-title>{{game.title}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{game.short_description}}
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ng-template>
+
+</ion-content>
